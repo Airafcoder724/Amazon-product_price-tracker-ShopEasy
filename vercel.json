@@ -1,8 +1,9 @@
 {
-    "crons": [
+    "functions": 
         {
-            "path": "/api/cron/github-metrics-sync",
-            "schedule": "*/10 * * * *"
+           "api/cron":{
+            "maxduration":5
+           }
         }
-    ]
+    
 }
