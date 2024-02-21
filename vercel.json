@@ -1,9 +1,8 @@
 {
-    "functions": 
+    "crons": [
         {
-           "api/cron":{
-            "maxduration":5
-           }
+            "path": "/api/cron",
+            "schedule": "*/10 * * * *"
         }
-    
+    ]
 }
