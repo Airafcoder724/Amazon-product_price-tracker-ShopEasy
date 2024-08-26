@@ -36,12 +36,14 @@ export async function scrapeAndStoreProduct (productUrl:string){
         }
 
         const newProduct = await Product.findOneAndUpdate(
-            {url:scrapedProduct?.url},
-            product || scrapedProduct,
+            {url:scrapedProduct.url},
+            product,
             { upsert:true ,new:true}
         )
-
-        revalidatePath(`/products/${newProduct._id}`);
+        
+        
+        
+        return newProduct._id;
 
     } catch (error:any) {
         throw new Error(`failed to scrape1 product:${error.message}`)

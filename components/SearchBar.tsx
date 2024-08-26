@@ -1,10 +1,12 @@
 'use client'
 import { scrapeAndStoreProduct } from '@/lib/actions';
 import React, { FormEvent, useState } from 'react'
+import { useRouter } from 'next/navigation';
 
 const SearchBar = () => {
     const [searchPrompt , setSearchPrompt] = useState('');
     const [isLoading , setIsLoading] = useState(false);
+    const router = useRouter();
   const isValidAmazonProduct =(url : string)=>{
     try {
       const parsedUrl = new URL(url);
@@ -34,7 +36,10 @@ const SearchBar = () => {
       try {
         setIsLoading(true);
         // scrape product
-        const product = await scrapeAndStoreProduct(searchPrompt)
+        const product_id = await scrapeAndStoreProduct(searchPrompt)
+        if(product_id){
+          router.push(`/products/${product_id}`)
+        }
       } catch (error) {
         console.log(error)
       }finally{

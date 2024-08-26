@@ -33,7 +33,6 @@ export function extractPrice(...elements:any){
 export function extractCurrency(currency:any){
     const currencyText = currency.text().trim().slice(0, 1);
     return currencyText ? currencyText : "";
-    return '';
 }
 
 export function extractReviews(...elements:any){
